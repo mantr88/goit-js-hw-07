@@ -5,6 +5,8 @@ const divGalleryRef = document.querySelector('.gallery');
 
 function makeGallery(items) {
     return items.map(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('gallery__item')
         const itemLink = document.createElement('a');
         itemLink.classList.add('gallery__link');
         itemLink.href = `${item.original}`;
@@ -16,12 +18,22 @@ function makeGallery(items) {
         itemImg.alt = `${item.description}`;
 
         itemLink.append(itemImg);
-        return itemLink
+        itemDiv.append(itemLink);
+        return itemDiv
                 
     })
     
 }
-
+/* <div class="gallery__item">
+  <a class="gallery__link" href="large-image.jpg">
+    <img
+      class="gallery__image"
+      src="small-image.jpg"
+      data-source="large-image.jpg"
+      alt="Image description"
+    />
+  </a>
+</div> */
 const items = makeGallery(galleryItems);
 divGalleryRef.append(...items);
 
