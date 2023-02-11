@@ -31,12 +31,13 @@ divGalleryRef.append(...items);
 
 
 function toShowInstance(e) {
-    const img = e.target
-    // const instance = basicLightbox.create(e.target);
-    // return instance.show();
-
-    
+    e.preventDefault();
+    const currentImg = e.target;
+    currentImg.src = currentImg.dataset.source;
+    const instance = basicLightbox.create(currentImg.outerHTML);
+    instance.show();        
 }
+
 divGalleryRef.addEventListener('click', toShowInstance)
 
 
