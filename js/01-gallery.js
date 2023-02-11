@@ -44,6 +44,7 @@ function toShowInstance(e) {
     function closeByEscape(e) {
         if (e.code === 'Escape') {
             instance.close();
+            window.removeEventListener('keydown', closeByEscape);
         }
     }
 }
