@@ -1,11 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// console.log(galleryItems);
-
 const divGalleryRef = document.querySelector('.gallery');
-
-
 
 function makeGallery(items) {
     return items.map(item => {
@@ -32,25 +28,21 @@ divGalleryRef.append(...items);
 
 function toShowInstance(e) {
     e.preventDefault();
+    
     const currentImg = e.target;
     currentImg.src = currentImg.dataset.source;
+    
     const instance = basicLightbox.create(currentImg.outerHTML);
-    instance.show();        
+    
+    instance.show();
+    
+    window.addEventListener('keydown', closeByEscape)
+
+    function closeByEscape(e) {
+        if (e.code === 'Escape') {
+            instance.close();
+        }
+    }
 }
 
 divGalleryRef.addEventListener('click', toShowInstance)
-
-
-
-
-
-// {/* <div class="gallery__item">
-//   <a class="gallery__link" href="large-image.jpg">
-//     <img
-//       class="gallery__image"
-//       src="small-image.jpg"
-//       data-source="large-image.jpg"
-//       alt="Image description"
-//     />
-//   </a>
-// </div> */}
