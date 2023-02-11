@@ -15,8 +15,8 @@ function makeGallery(items) {
         itemImg.alt = `${item.description}`;
 
         itemLink.append(itemImg);
-        // listItem.append(itemLink);
-        return itemLink
+        listItem.append(itemLink);
+        return listItem
 
     })
 }
@@ -26,14 +26,12 @@ const galeryListRef = document.querySelector('.gallery');
 const items = makeGallery(galleryItems);
 galeryListRef.append(...items);
 
-function turnOnSimpleLightbox(e) {
-    e.preventDefault();
-    const gallery = new SimpleLightbox('.gallery a', { /* options */ });
-    gallery.on('show.simplelightbox', function () {
-	// Do something…
-});
-    // let lightbox = $('.gallery a').simpleLightbox({ /* options */ });
-}
 
-galeryListRef.addEventListener('click', turnOnSimpleLightbox);
+const gallery = new SimpleLightbox('.gallery a', {
+  captionsData: "alt",
+  captionDelay: 250,
+  captionType: "alt", });
+
+
+
 
